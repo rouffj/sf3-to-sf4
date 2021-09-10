@@ -1,0 +1,28 @@
+'Hello %name%!': 'Bonjour %name% !'
+Hangman: Le Pendu
+'You won!': 'Vous avez gagné !'
+Congratulations!: Félicitations !
+'You found the word <strong>%word%</strong> and won this game.': 'Vous avez trouvé le mot <strong>%word%</strong> et gagné cette partie.'
+'Let''s play!': C'est parti !
+'Guess the mysterious word': 'Trouver le mot mystère'
+'This is your last attempt.|You still have %count% remaining attempts.': C'est votre dernière chance.|Il vous reste %count% coups.
+'Reset the game': Relancer la partie
+'Try a letter': Essayer une lettre
+'Word:': 'Mot :'
+'Let me guess...': 'Je tente...'
+'You''re hanged!': 'Vous êtes pendu !'
+'Game Over!': 'Game over !'
+'Oops, you''re hanged... The word to guess was <strong>%word%</strong>.': 'Oups, vous êtes pendu... le mot à trouver était <strong>%word%</strong>.'
+Game: Partie
+Register: S'enregistrer
+Login: Se connecter
+Logout: Se déconnecter
+Contact: Contact
+'Last Games': 'Dernières parties'
+'Last players': 'Derniers joueurs'
+Sign-in: Se connecter
+'Access your player account': 'Accéder à votre compte de joueur'
+'Username:': 'Identifiant :'
+'Password:': 'Mot de passe :'
+login: connexion
+Contact us: Contactez-nous

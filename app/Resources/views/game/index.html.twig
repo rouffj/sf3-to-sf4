@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title parent() ~ ' | ' ~ 'Let\'s play!'|trans %}
+
+{% block content %}
+    <h2>{{ 'Guess the mysterious word'|trans }}</h2>
+
+    <p class="attempts" id="remaining-attempts">
+        {{ 'This is your last attempt.|You still have %count% remaining attempts.'|transchoice(game.remainingAttempts) }}
+    </p>
+
+    <ul class="word_letters">
+        {% for letter in game.wordLetters %}
+            {% set letter_found = game.letterFound(letter) %}
+
+            <li class="letter{{ not letter_found ? ' hidden' }}">
+                {{ letter_found ? letter : '?' }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <br class="clearfix" />
+
+    <p class="attempts">
+        <a href="{{ path('app_game_reset') }}">{{ 'Reset the game'|trans }}</a>
+    </p>
+
+    <br class="clearfix" />
+
+    <h2>{{ 'Try a letter'|trans }}</h2>
+
+    <ul>
+        {% for letter in 'A'..'Z' %}
+            <li class="letter">
+                <a href="{{ path('app_game_play_letter', {'letter': letter}) }}">
+                    {{ letter }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Try a word</h2>
+
+    <form action="{{ path('app_game_play_word') }}" method="post">
+        <p>
+            <label for="word">{{ 'Word:'|trans }}</label>
+            <input type="text" id="word" name="word"/>
+            <button type="submit">{{ 'Let me guess...'|trans }}</button>
+        </p>
+    </form>
+{% endblock %}

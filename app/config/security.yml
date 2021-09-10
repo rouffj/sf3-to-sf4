@@ -1,0 +1,35 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: bcryt
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        players_in_memory:
+            memory:
+                users:
+                    toto:
+                        password: $argon2id$v=19$m=65536,t=4,p=1$9mvWBJewFVTO88KzhTCK6A$1Z/73ynPeB6Nd/5k4yDi5/ojWfttINB2CIhUsQc+kAA
+                        roles: ROLE_PLAYER
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            provider: players_in_memory
+
+            form_login:
+                login_path: app_main_index
+                check_path: app_security_login
+                username_parameter: player_name
+                password_parameter: player_pass
+                default_target_path: app_game_index
+
+            logout:
+                path: app_security_logout
+                target: app_main_index

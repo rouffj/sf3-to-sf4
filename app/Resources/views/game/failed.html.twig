@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title parent() ~ ' | ' ~ 'You\'re hanged!'|trans %}
+
+{% block content %}
+    <h2>{{ 'Game Over!'|trans }}</h2>
+
+    <p id="result">
+        {% trans with {'%word%': game.word} %}
+            Oops, you're hanged... The word to guess was <strong>%word%</strong>.
+        {% endtrans %}
+    </p>
+{% endblock %}

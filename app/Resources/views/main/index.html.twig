@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title parent() ~ ' | ' ~ 'Sign-in'|trans %}
+
+{% block content %}
+    <h2>{{ 'Access your player account'|trans }}</h2>
+
+    {% if last_error %}
+        <ul>
+            <li class="alert alert-danger">{{ last_error.messageKey|trans(last_error.messageData, domain='security') }}</li>
+        </ul>
+    {% endif %}
+
+    <form action="{{ path('app_security_login') }}" method="post">
+        <label for="username">{{ 'Username:'|trans }}</label>
+        <input type="text" id="username" name="player_name" value="{{ last_username }}" />
+
+        <label for="password">{{ 'Password:'|trans }}</label>
+        <input type="password" id="password" name="player_pass" />
+
+        <button type="submit">{{ 'login'|trans }}</button>
+    </form>
+{% endblock %}

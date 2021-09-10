@@ -1,0 +1,28 @@
+'Hello %name%!': 'Hello %name%!'
+Hangman: Hangman
+'You won!': 'You won!'
+Congratulations!: Congratulations!
+'You found the word <strong>%word%</strong> and won this game.': 'You found the word <strong>%word%</strong> and won this game.'
+'Let''s play!': Let's play!
+'Guess the mysterious word': 'Guess the mysterious word'
+'This is your last attempt.|You still have %count% remaining attempts.': 'This is your last attempt.|You still have %count% remaining attempts.'
+'Reset the game': 'Reset the game'
+'Try a letter': 'Try a letter'
+'Word:': 'Word:'
+'Let me guess...': 'Let me guess...'
+'You''re hanged!': 'You''re hanged!'
+'Game Over!': 'Game Over!'
+'Oops, you''re hanged... The word to guess was <strong>%word%</strong>.': 'Oops, you''re hanged... The word to guess was <strong>%word%</strong>.'
+Game: Game
+Register: Register
+Login: Login
+Logout: Logout
+Contact: Contact
+'Last Games': 'Last Games'
+'Last players': 'Last players'
+Sign-in: Sign-in
+'Access your player account': 'Access your player account'
+'Username:': 'Username:'
+'Password:': 'Password:'
+login: login
+Contact us: Contact us

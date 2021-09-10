@@ -1,0 +1,28 @@
+<div id="header">
+    <div id="logo">
+        <h1>
+            <a href="{{ path('app_main_index') }}">{{ 'Hangman'|trans }}</a>
+        </h1>
+    </div>
+    <div id="menu">
+        <ul>
+            <li class="first current_page_item">
+                <a href="{{ path('app_game_index') }}">{{ 'Game'|trans }}</a>
+            </li>
+            <li>
+                <a href="/signup">{{ 'Register'|trans }}</a>
+            </li>
+            <li>
+                {% if app.user %}
+                    <a href="{{ path('app_security_logout') }}">{{ 'Logout'|trans }}</a>
+                {% else %}
+                    <a href="{{ path('app_main_index') }}">{{ 'Login'|trans }}</a>
+                {% endif %}
+            </li>
+            <li>
+                <a href="{{ path('app_main_contact') }}">{{ 'Contact'|trans }}</a>
+            </li>
+        </ul>
+        <br class="clearfix" />
+    </div>
+</div>

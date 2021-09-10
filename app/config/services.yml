@@ -1,0 +1,42 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    app.game.dictionaries:
+        - %kernel.project_dir%/app/Resources/data/words.txt
+        - %kernel.project_dir%/app/Resources/data/words.xml
+
+services:
+    app.contact.mailer:
+        class: AppBundle\Contact\Mailer
+        arguments:
+            $mailer: '@mailer'
+            $sendFrom: '%app.contact.send_from%'
+            $sendTo: '%app.contact.send_to%'
+
+    app.game.loader.txt:
+        class: AppBundle\Game\Loader\TextFileLoader
+        public: false
+    app.game.loader.xml:
+        class: AppBundle\Game\Loader\XmlFileLoader
+        public: false
+    app.game.word_list:
+        class: AppBundle\Game\WordList
+        calls:
+            - method: addLoader
+              arguments: [txt, '@app.game.loader.txt']
+            - method: addLoader
+              arguments: [xml, '@app.game.loader.xml']
+            - method: loadDictionaries
+              arguments: ['%app.game.dictionaries%']
+        public: false
+    app.game.context:
+        class: AppBundle\Game\GameContext
+        arguments:
+            - '@session'
+        public: false
+    app.game.runner:
+        class: AppBundle\Game\GameRunner
+        arguments:
+            - '@app.game.context'
+            - '@app.game.word_list'
+        public: true

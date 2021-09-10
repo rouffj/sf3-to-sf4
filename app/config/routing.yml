@@ -1,0 +1,14 @@
+home:
+    path: /
+    defaults:
+        _controller: 'FrameworkBundle:Redirect:redirect'
+        route: app_main_index
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+    prefix: /{_locale}
+    defaults:
+        _locale: '%locale%'
+    requirements:
+        _locale: en|fr
