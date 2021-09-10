@@ -3,7 +3,7 @@
 {% block title parent() ~ ' | ' ~ 'Contact us'|trans %}
 
 {% block content %}
-    <h2>{{ 'Contact us'|trans }}</h2>
+    <h2>{{ 'Contact us'|trans([], 'form') }}</h2>
 
 {#    {{ form(contact_form, {'attr': {'novalidate': ''}}) }}#}
     {{ form(contact_form) }}
