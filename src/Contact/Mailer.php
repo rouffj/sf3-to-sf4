@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Contact;
+namespace App\Contact;
 
 class Mailer
 {

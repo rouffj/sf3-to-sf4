@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Form\Type;
+namespace App\Form\Type;
 
-use AppBundle\Contact\Message;
+use App\Contact\Message;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;

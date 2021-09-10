@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Contact;
+namespace App\Contact;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
