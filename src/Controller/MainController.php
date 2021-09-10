@@ -8,16 +8,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Contact\Mailer;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class MainController extends AbstractController
 {
     /**
      * @Route(name="app_main_index", methods={"GET"})
      */
-    public function index()
+    public function index(AuthenticationUtils $authenticationUtils)
     {
-        $authenticationUtils = $this->get('security.authentication_utils');
-
         return $this->render('main/index.html.twig', [
             'last_username' => $authenticationUtils->getLastUsername(),
             'last_error' => $authenticationUtils->getLastAuthenticationError(),
