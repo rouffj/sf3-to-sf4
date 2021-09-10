@@ -25,7 +25,7 @@ framework:
         # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id: session.handler.native_file
         save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
-        use_strict_mode: true
+        use_strict_mode: true # to comment for Symfony4 upgrade
     fragments: ~
     http_method_override: true
     assets: ~
