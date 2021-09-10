@@ -53,7 +53,7 @@ class GameControllerTest extends WebTestCase
         $remainingAttempts = $crawler->filter('#remaining-attempts');
 
         self::assertCount(1, $remainingAttempts, 'Remaining attempts should be displayed');
-        self::assertContains((string) (Game::MAX_ATTEMPTS - 1), $remainingAttempts->text(), 'An attempt should have been lost');
+        self::assertStringContainsString((string) (Game::MAX_ATTEMPTS - 1), $remainingAttempts->text(), 'An attempt should have been lost');
         self::assertCount(8, $crawler->filter('.letter.hidden'), 'All letters should be hidden');
     }
 
@@ -81,7 +81,7 @@ class GameControllerTest extends WebTestCase
         $remainingAttempts = $crawler->filter('#remaining-attempts');
 
         self::assertCount(1, $remainingAttempts, 'Remaining attempts should be displayed');
-        self::assertContains((string) Game::MAX_ATTEMPTS, $remainingAttempts->text(), 'An attempt should have been lost');
+        self::assertStringContainsString((string) Game::MAX_ATTEMPTS, $remainingAttempts->text(), 'An attempt should have been lost');
         self::assertCount(6, $crawler->filter('.letter.hidden'), 'All letters but "T" should be hidden');
     }
 
@@ -109,7 +109,7 @@ class GameControllerTest extends WebTestCase
         $result = $crawler->filter('#result');
 
         self::assertCount(1, $result, 'Result should be displayed');
-        self::assertContains("testword", $result->text(), 'Result text should match');
+        self::assertStringContainsString("testword", $result->text(), 'Result text should match');
     }
 
     public function testPlayWordWins()
@@ -136,6 +136,6 @@ class GameControllerTest extends WebTestCase
         $result = $crawler->filter('#result');
 
         self::assertCount(1, $result, 'Result should be displayed');
-        self::assertContains("testword", $result->text(), 'Result text should match');
+        self::assertStringContainsString("testword", $result->text(), 'Result text should match');
     }
 }

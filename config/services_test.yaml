@@ -1,0 +1,7 @@
+parameters:
+    app.game.dictionaries:
+        - '%kernel.project_dir%/data/test.txt'
+
+services:
+
+
