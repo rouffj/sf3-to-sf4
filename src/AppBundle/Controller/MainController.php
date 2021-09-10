@@ -30,7 +30,7 @@ class MainController extends Controller
         $form = $this->createForm(ContactFormType::class);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->get('app.contact.mailer')->sendMessage($form->getData());
 
             return $this->redirectToRoute('app_main_contact');

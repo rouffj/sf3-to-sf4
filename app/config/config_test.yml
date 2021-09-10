@@ -3,7 +3,7 @@ imports:
 
 parameters:
     app.game.dictionaries:
-        - %kernel.project_dir%/app/Resources/data/test.txt
+        - '%kernel.project_dir%/app/Resources/data/test.txt'
 
 framework:
     test: ~

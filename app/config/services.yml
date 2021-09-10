@@ -2,8 +2,8 @@
 # https://symfony.com/doc/current/service_container.html
 parameters:
     app.game.dictionaries:
-        - %kernel.project_dir%/app/Resources/data/words.txt
-        - %kernel.project_dir%/app/Resources/data/words.xml
+        - '%kernel.project_dir%/app/Resources/data/words.txt'
+        - '%kernel.project_dir%/app/Resources/data/words.xml'
 
 services:
     app.contact.mailer:
