@@ -6,8 +6,10 @@ use App\Form\Type\ContactFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Contact\Mailer;
 
-class MainController extends Controller
+class MainController extends AbstractController
 {
     /**
      * @Route(name="app_main_index", methods={"GET"})
@@ -25,13 +27,13 @@ class MainController extends Controller
     /**
      * @Route("/contact", name="app_main_contact", methods={"GET", "POST"})
      */
-    public function contact(Request $request)
+    public function contact(Request $request, Mailer $mailer)
     {
         $form = $this->createForm(ContactFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('app.contact.mailer')->sendMessage($form->getData());
+            $mailer->sendMessage($form->getData());
 
             return $this->redirectToRoute('app_main_contact');
         }

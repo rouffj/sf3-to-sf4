@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class SidebarController extends Controller
+class SidebarController extends AbstractController
 {
     /**
      * todo Cache(smaxage=3600)

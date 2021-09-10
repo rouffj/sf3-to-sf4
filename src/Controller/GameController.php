@@ -3,23 +3,29 @@
 namespace App\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Game\GameRunner;
 
 /**
  * @Route("/game")
  * todo IsGranted("ROLE_PLAYER")
  */
-class GameController extends Controller
+class GameController extends AbstractController
 {
+    public function __construct(GameRunner $gameRunner)
+    {
+        $this->gameRunner = $gameRunner;
+    }
+
     /**
      * @Route(name="app_game_index", methods={"GET"})
      */
     public function index()
     {
         return $this->render('game/index.html.twig', [
-            'game' => $this->get('app.game.runner')->loadGame(),
+            'game' => $this->gameRunner->loadGame(),
         ]);
     }
 
@@ -28,7 +34,7 @@ class GameController extends Controller
      */
     public function reset()
     {
-        $this->get('app.game.runner')->resetGame();
+        $this->gameRunner->resetGame();
 
         return $this->redirectToRoute('app_game_index');
     }
@@ -43,7 +49,7 @@ class GameController extends Controller
      */
     public function playLetter($letter)
     {
-        $game = $this->get('app.game.runner')->playLetter($letter);
+        $game = $this->gameRunner->playLetter($letter);
 
         if ($game->isWon()) {
             return $this->redirectToRoute('app_game_won');
@@ -65,7 +71,7 @@ class GameController extends Controller
      */
     public function playWord(Request $request)
     {
-        $game = $this->get('app.game.runner')->playWord($request->request->getAlpha('word'));
+        $game = $this->gameRunner->playWord($request->request->getAlpha('word'));
 
         if ($game->isWon()) {
             return $this->redirectToRoute('app_game_won');
@@ -80,7 +86,7 @@ class GameController extends Controller
     public function won()
     {
         return $this->render('game/won.html.twig', [
-            'game' => $this->get('app.game.runner')->resetGameOnSuccess(),
+            'game' => $this->gameRunner->resetGameOnSuccess(),
         ]);
     }
 
@@ -90,7 +96,7 @@ class GameController extends Controller
     public function failed()
     {
         return $this->render('game/failed.html.twig', [
-            'game' => $this->get('app.game.runner')->resetGameOnFailure(),
+            'game' => $this->gameRunner->resetGameOnFailure(),
         ]);
     }
 }
